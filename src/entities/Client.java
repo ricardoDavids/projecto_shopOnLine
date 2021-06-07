@@ -1,9 +1,16 @@
 package entities;
 
+import dto.CartDTO;
+
 public class Client extends Person {
 
 	private String loguin;
 	private String password;
+	private Double balance;//saldo em carteira
+	
+	
+
+	private CartDTO cart = new CartDTO(); //Aqui tenho uma dependencia de CartDTO
 	
 	public Client() {
 		
@@ -31,25 +38,47 @@ public class Client extends Person {
 		this.password = password;
 	}
 
-	@Override
-	public void registerUser(String password) {
-		
-		 this.password= "aeiou12";
+	
+	public Double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(Double balance) {
+		this.balance = balance;
+	}
+
+	public CartDTO getCart() {
+		return cart;
+	}
+
+	public void setCart(CartDTO cart) {
+		this.cart = cart;
+	}
+	
+	
+	//Perguntar porque não poderia fazer aqui este metodo abaixo, é que estava a dar me erro no programa main
+	
+	
+	public Client registerUser() {
+		Client cl= new Client();
+		cl.setLoguin("@Pereira");
+		cl.setName("David_Pereira");
+		cl.setAge(35);
+		//cl.setPassword("aeiou12");
+		this.password= "aeiou12";
 		 if(password == "aeiou12") {
 			 System.out.println("User registed");
 		 }
 		 else {
-			 System.out.println("Try again");
+			 System.out.println("Error: Insert again correct password ");
 		 }
-		
+		return cl;
 	}
 
+	
 	@Override
-	public String toString() {
-		return "Client [loguin=" + loguin + ", password=" + password + ", getLoguin()=" + getLoguin()
-				+ ", getPassword()=" + getPassword() + ", getName()=" + getName() + ", getAge()=" + getAge()
-				+ ", getId()=" + getId() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-				+ super.toString() + "]";
+	public String toString() { 
+		return "Client [loguin=" + loguin + ", password=" + password + " Name:" + registerUser().getName() + " Age:" + registerUser().getAge() ;
 	}
 	
 }

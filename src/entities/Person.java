@@ -1,6 +1,8 @@
 package entities;
 
-public abstract class Person {
+import java.util.UUID;
+
+public abstract class Person { // nao vou criar Person porque ele já está extendido de 2 classes
 	
 	private String name;
 	private Integer age;
@@ -42,7 +44,19 @@ public abstract class Person {
 	}
 	
 	
-	public abstract void registerUser(String string);
+	//public abstract void registerUser(String string);
 	
+	
+	//Criar um vendedor
+	// No metodo abaixo haveria alguma hipotese de colocar o protected e porquê?
+	public Seller createSeller() {
+		Seller seller = new Seller();
+		seller.setLoguin("Ricardo");
+		seller.setPassword("123");
+		seller.setAge(22);
+		seller.setName("Ricardo Pereira");
+		seller.setJobId(UUID.randomUUID().toString());
+		return seller;
+	}
 
 }
